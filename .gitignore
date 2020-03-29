@@ -5,6 +5,7 @@ config.py
 # Edit at https://www.gitignore.io/?templates=code,python
 
 ### Code ###
+.vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json

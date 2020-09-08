@@ -2,9 +2,10 @@ import alpaca_trade_api as tradeapi
 import time
 import logging
 
-from brokers.broker import Broker
-from strategies.strategy import Strategy
+from Brokers.Broker import Broker
+from Strategies.Strategy import Strategy
 import config
+
 
 # https://docs.alpaca.markets/api-documentation/api-v2/
 # https://github.com/alpacahq/Momentum-Trading-Example/blob/master/algo.py
@@ -48,9 +49,9 @@ class Alpaca(Broker):
         """
 
         try:
-            #check if symbol is available
+            # check if symbol is available
             asset = self.api.get_asset(symbol)
-            if asset.tradable != True:
+            if not asset.tradable:
                 raise Exception("asset is not tradeable " + symbol)
         except Exception as e:
             logging.warning(e)
@@ -113,7 +114,7 @@ class Alpaca(Broker):
 
     def check_asset_shortable(self, asset):
         """
-        @return: 
+        return:
             True if asset can be shorted
             False if not
         """

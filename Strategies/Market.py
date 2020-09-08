@@ -2,8 +2,8 @@ import time
 import logging
 from math import floor
 
-from brokers.broker import Broker
-from strategies.strategy import Strategy
+from Brokers.Broker import Broker
+from Strategies.Strategy import Strategy
 
 
 class Market(Strategy):
@@ -45,18 +45,18 @@ class Market(Strategy):
         cash per asset to allocate = account cash * max risk per trade * factor of asset
         amount of shares to order per asset = floor(cash per asset to allocate / latest price)
         """
-        latest_prices = self.dataapi.get_latest_price(self.symbols)
+        latest_prices = self.data_api.get_latest_price(self.symbols)
         for symbol in self.symbols:
             self.assets[symbol]["latest_price"] = latest_prices[symbol]
             self.assets[symbol]["cash_to_allocate"] = self.cash * \
-                self.risk_pct * self.assets[symbol]["factor"]
+                                                      self.risk_pct * self.assets[symbol]["factor"]
             self.assets[symbol]["shares_to_order"] = floor(
                 self.assets[symbol]["cash_to_allocate"] / self.assets[symbol]["latest_price"])
 
     def run(self):
         logging.info("run start")
-        #self.broker.wait_to_trade()
-        #while True:
+        # self.broker.wait_to_trade()
+        # while True:
         #    if self.broker.api.get_clock().is_open == False:
         #        time.sleep(1)
         #    else:
@@ -65,7 +65,7 @@ class Market(Strategy):
 
         # check if account is able to trade
         tradeable = self.broker.check_account_tradeable()
-        if tradeable == False:
+        if not tradeable:
             logging.critical("account not able to trade")
             return
 
@@ -80,7 +80,7 @@ class Market(Strategy):
 
         # check if market is positive or negative (buy or sell decision)
         market_positive = self.check_change_positive_daily(self.symbol_market)
-        if(market_positive == True):
+        if market_positive:
             side = 'buy'
         else:
             side = 'sell'

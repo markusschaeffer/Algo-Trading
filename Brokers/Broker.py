@@ -28,7 +28,7 @@ class Broker:
 
         # get as timestamps in UTC: current timestamp, is_open, next_open, next_close
         clock = self.alpaca_api.get_clock()
-        if clock.is_open == True:
+        if clock.is_open:
             logging.info("market is_open")
             logging.info("wait_to_trade end")
             return
@@ -45,3 +45,15 @@ class Broker:
         time.sleep(time_to_wait_seconds)
 
         logging.info("wait_to_trade end")
+
+    def order_asset(self, symbol, qty, side):
+        pass
+
+    def check_account_tradeable(self):
+        pass
+
+    def get_account_cash(self):
+        pass
+
+    def check_symbols(self, param):
+        pass

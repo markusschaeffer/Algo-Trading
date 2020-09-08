@@ -46,3 +46,5 @@ websocket-client==0.57.0
 websockets==8.1
 wincertstore==0.2
 wrapt==1.11.2
+
+iexfinance~=0.4.3

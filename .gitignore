@@ -4,6 +4,7 @@ config.py
 Data/
 tda_token
 chromedriver.exe
+venv/
 
 
 # Created by https://www.gitignore.io/api/code,python

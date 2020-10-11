@@ -1,14 +1,14 @@
-# Algo-Trading (Work in Progress!)
+# Algo-Trading Framework
 
-A framework for implementing different algorithmic trading strategies.
-
-## Strategies
-- Market
-- Market Movers
-- Sentiment
-
-## Brokers
-- ALpaca Trading (https://alpaca.markets/)
+A framework for gathering historical stock data, backtesting different algorithmic trading ideas and implementing them via brokers with paper-money accounts.
 
 ## Data Providers
-- IEX Cloud (https://iexcloud.io/)
+- [TDAmeritrade](https://developer.tdameritrade.com/apis)
+- [Finnhub](https://finnhub.io/)
+- [Polygon](https://polygon.io/)
+
+## Backtrading
+- [Backtrader](https://www.backtrader.com/)
+
+## Brokers
+- [Alpaca Trading](https://alpaca.markets/)

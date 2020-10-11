@@ -1,5 +1,10 @@
 config.py
 *.log
+*.csv
+Data/
+tda_token
+chromedriver.exe
+
 
 # Created by https://www.gitignore.io/api/code,python
 # Edit at https://www.gitignore.io/?templates=code,python

@@ -15,11 +15,11 @@ class Polygon:
 
     """
 
-    def __init__(self, token=config.POLYGON_TOKEN):
+    def __init__(self, token=config.POLYGON_TOKEN, base_url=config.POLYGON_BASE_URL):
         self.polygon_token = token
-        self.polygon_base_url = 'https://api.polygon.io'
+        self.polygon_base_url = base_url
 
-    def get_market_status(self, exchange='NASDAQ'):
+    def polygon_get_market_status(self, exchange='NASDAQ'):
         """
         Current status of NASDAQ or NYSE
         https://polygon.io/docs/#get_v1_marketstatus_now_anchor
@@ -41,7 +41,7 @@ class Polygon:
         else:
             return None
 
-    def get_us_stocks_candles_for_date(self, _date=date.today().strftime('%Y-%m-%d')):
+    def polygon_get_us_stocks_candles_for_date(self, _date=date.today().strftime('%Y-%m-%d')):
         """
         https://polygon.io/docs/#get_v2_aggs_grouped_locale__locale__market__market___date__anchor
 
@@ -52,7 +52,7 @@ class Polygon:
         response = requests.get(self.polygon_base_url + endpoint, params={'apiKey': self.polygon_token})
         return response.json()
 
-    def market_holiday(self, exchange='NASDAQ'):
+    def polygon_market_holiday(self, exchange='NASDAQ'):
         """
         Checks if today is a market holiday
         https://polygon.io/docs/#get_v1_marketstatus_upcoming_anchor
